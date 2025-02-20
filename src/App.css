@@ -1,0 +1,35 @@
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  
+  .search-container input {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .search-container button {
+    margin-left: 0.5rem;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  .suggestions-container {
+    margin: 1rem auto;
+    text-align: left;
+    background: #fff;
+    color:black;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .suggestion-item {
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .suggestion-item:hover {
+    background-color: #f0f0f0;
+  }
