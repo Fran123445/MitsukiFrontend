@@ -1,35 +1,44 @@
-  .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  }
-  
-  .search-container input {
-    flex: 1;
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  .search-container button {
-    margin-left: 0.5rem;
-    padding: 0.6rem 1.2rem;
-  }
-  
-  .suggestions-container {
-    margin: 1rem auto;
-    text-align: left;
-    background: #fff;
-    color:black;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .suggestion-item {
-    padding: 0.5rem;
-    cursor: pointer;
-  }
-  
-  .suggestion-item:hover {
-    background-color: #f0f0f0;
-  }
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  border-radius: 5px;
+  width: 500px
+}
+
+button {
+  border-radius: 5px;
+}
+
+.suggestions-container {
+  align-self: flex-start;
+  width: 500px;
+  background-color: rgba(255, 255, 255, 0.87);
+  color: black;  
+}
+
+.results-container {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.87);
+  display: flex;
+  border-radius: 10px;
+}
+
+.result-item {
+  background-color: #154592;
+  color: rgba(255, 255, 255, 0.87);;
+  padding: 20px;
+  margin: 20px;
+  width: 100px;
+  border-radius: 10px;
+  word-break: break-all;
+}

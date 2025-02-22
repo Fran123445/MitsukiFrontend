@@ -12,12 +12,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  display: flex;
-  align-items:center;
-  justify-content: center;
-}
-
 h1 {
   font-size: xxx-large
 }
