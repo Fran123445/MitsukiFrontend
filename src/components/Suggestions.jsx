@@ -34,7 +34,11 @@ function Suggestions({ suggestions }) {
                       backgroundColor: theme.palette.primary.main,
                       borderRadius: 2,
                       overflow: 'hidden',
-                      padding: 2
+                      padding: 2,
+                      "&:hover": {
+                        backgroundColor: "red",
+                        cursor: "pointer"
+                      }
                     }}
                   >
                     <ImageListItem>
@@ -46,6 +50,7 @@ function Suggestions({ suggestions }) {
                           aspectRatio: "2/3", 
                           objectFit: "cover"
                         }}
+                        onClick={() => window.open(`https://anilist.co/anime/${item.id}`)}
                       />
                       <ImageListItemBar title={item.title} subtitle={`Score: ${item.score.toFixed(2)}`} />
                     </ImageListItem>
