@@ -4,12 +4,18 @@ function Filters({ yearRange, onYearRangeChange }) {
 
     return(
         <Accordion
-            sx={{ width: "50%"}}
+            sx={{
+                width: "100%",
+                maxWidth: "1000px",
+                marginBottom: 4,
+            }}
+            disableGutters={true}
         >
             <AccordionSummary>
                 <Typography component="span">Filters</Typography>
             </AccordionSummary>
             <AccordionDetails>
+                <Typography component="span">Year range</Typography>
                 <Slider
                     getAriaLabel={() => 'Year range'}
                     onChange={onYearRangeChange}

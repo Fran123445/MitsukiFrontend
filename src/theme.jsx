@@ -19,7 +19,14 @@ const theme = createTheme({
                     backgroundColor: theme.palette.secondary.main
                 })
             }
-        }
+        },
+        MuiAccordion: {
+            styleOverrides: {
+              root: ({ theme }) => ({
+                backgroundColor: theme.palette.secondary.main,
+              }),
+            },
+          },
     }
 });
 
