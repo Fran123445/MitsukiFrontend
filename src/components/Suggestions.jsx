@@ -1,7 +1,11 @@
 import { useTheme, useMediaQuery, ImageList, ImageListItem, ImageListItemBar, Box, Paper } from '@mui/material';
+import { useContext } from 'react';
+import { MediaContext } from '../context/MediaContext';
 
-function Suggestions({ suggestions }) {
+function Suggestions() {
     
+    const { suggestions } = useContext(MediaContext);
+
     const theme = useTheme()
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"))
     const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md"))

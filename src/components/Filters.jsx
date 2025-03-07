@@ -1,6 +1,10 @@
 import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography } from "@mui/material";
+import { useContext } from "react";
+import { MediaContext } from "../context/MediaContext";
 
-function Filters({ yearRange, onYearRangeChange }) {
+function Filters() {
+
+    const { yearRange, setYearRange } = useContext(MediaContext)
 
     return(
         <Accordion
@@ -18,7 +22,7 @@ function Filters({ yearRange, onYearRangeChange }) {
                 <Typography component="span">Year range</Typography>
                 <Slider
                     getAriaLabel={() => 'Year range'}
-                    onChange={onYearRangeChange}
+                    onChange={(_,v) => setYearRange(v)}
                     value={yearRange}
                     min={1900}
                     max={2025}
