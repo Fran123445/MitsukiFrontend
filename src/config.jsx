@@ -1,17 +1,16 @@
 export const CONFIG = {
     YEAR_RANGE: {
         MIN: 1900,
-        MAX: Date().getFullYear()
+        MAX: 2025
     },
     DEFAULT_TOP_N: 25,
-    MEDIA_TYPES: {
-        ANIME: {
-            backendEndpoint: "/similarity/anime",
-            externalLink: "https://anilist.co/anime/{id}"
-        },
-        MANGA: {
-            backendEndpoint: "/similarity/manga",
-            externalLink: "https://anilist.co/manga/{id}"
-        }
+    MEDIA_EXTERNAL_LINKS: {
+        ANIME: "https://anilist.co/anime/{id}",
+        MANGA: "https://anilist.co/manga/{id}"
+    },
+    BACKEND_URL: "http://localhost:8000",
+    BACKEND_ENDPOINTS: {
+        ANIME: "/similarity/anime",
+        MANGA: "/similarity/manga"
     }
 }
