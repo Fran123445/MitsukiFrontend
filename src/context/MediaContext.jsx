@@ -9,6 +9,7 @@ export function MediaContextProvider({ children }) {
 
     const [itemType, setItemType] = useState(null);
     const [itemId, setItemId] = useState(null);
+    const [scoreRange, setScoreRange] = useState([0, 100]);
     const [yearRange, setYearRange] = useState([CONFIG.YEAR_RANGE.MIN, CONFIG.YEAR_RANGE.MAX]);
     const [suggestions, setSuggestions] = useState(null);
 
@@ -21,10 +22,12 @@ export function MediaContextProvider({ children }) {
 
         const options = {
             initialYear: yearRange[0],
-            finalYear: yearRange[1]
+            finalYear: yearRange[1],
+            minimumScore: scoreRange[0],
+            maximumScore: scoreRange[1],
         };
 
-        mediaFetchingService.getSuggestions("ANIME", itemId, options) // temporarily hardoced
+        mediaFetchingService.getSuggestions("ANIME", itemId, options) // temporarily hardcoded
         .then(suggestionsFetched => setSuggestions(suggestionsFetched));
     }
 
@@ -38,8 +41,10 @@ export function MediaContextProvider({ children }) {
         itemType,
         itemId,
         yearRange,
+        scoreRange,
         suggestions,
         setYearRange,
+        setScoreRange,
         handleSelection,
     };
 

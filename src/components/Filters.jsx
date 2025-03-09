@@ -4,7 +4,7 @@ import { MediaContext } from "../context/MediaContext";
 
 function Filters() {
 
-    const { yearRange, setYearRange } = useContext(MediaContext)
+    const { yearRange, setYearRange, scoreRange, setScoreRange } = useContext(MediaContext)
 
     return(
         <Accordion
@@ -26,6 +26,13 @@ function Filters() {
                     value={yearRange}
                     min={1900}
                     max={2025}
+                    valueLabelDisplay="auto"
+                />
+                <Typography component="span">Score range</Typography>
+                <Slider
+                    getAriaLabel={() => 'Score range'}
+                    onChange={(_,v) => setScoreRange(v)}
+                    value={scoreRange}
                     valueLabelDisplay="auto"
                 />
             </AccordionDetails>
