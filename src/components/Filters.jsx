@@ -1,10 +1,10 @@
-import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography, Button } from "@mui/material";
 import { useContext } from "react";
 import { MediaContext } from "../context/MediaContext";
 
 function Filters() {
 
-    const { yearRange, setYearRange, scoreRange, setScoreRange } = useContext(MediaContext)
+    const { yearRange, setYearRange, scoreRange, setScoreRange, updateSuggestions } = useContext(MediaContext)
 
     return(
         <Accordion
@@ -35,6 +35,13 @@ function Filters() {
                     value={scoreRange}
                     valueLabelDisplay="auto"
                 />
+                <Button variant="contained"
+                    onClick={updateSuggestions}
+                    // i'll have to update this because otherwhise the user could just infinitely
+                    // press this, refreshing nothing BUT still making calls to the backend 
+                >
+                    Refresh
+                </Button>
             </AccordionDetails>
         </Accordion>
     )

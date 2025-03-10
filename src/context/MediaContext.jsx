@@ -46,6 +46,7 @@ export function MediaContextProvider({ children }) {
         setYearRange,
         setScoreRange,
         handleSelection,
+        updateSuggestions,
     };
 
     return (
