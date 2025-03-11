@@ -1,10 +1,14 @@
-import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography, Button } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography, Button, Select, OutlinedInput, MenuItem, InputLabel } from "@mui/material";
 import { useContext } from "react";
 import { MediaContext } from "../context/MediaContext";
+import genres from "../../public/genres.json"
 
 function Filters() {
 
-    const { yearRange, setYearRange, scoreRange, setScoreRange, updateSuggestions } = useContext(MediaContext)
+    const { yearRange, setYearRange, scoreRange, setScoreRange, updateSuggestions,
+        excludedGenres, setExcludedGenres
+     } = useContext(MediaContext)
+
 
     return(
         <Accordion
@@ -18,7 +22,7 @@ function Filters() {
             <AccordionSummary>
                 <Typography component="span">Filters</Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails sx={{ display: 'flex', flexDirection: 'column'}}>
                 <Typography component="span">Year range</Typography>
                 <Slider
                     getAriaLabel={() => 'Year range'}
@@ -35,10 +39,31 @@ function Filters() {
                     value={scoreRange}
                     valueLabelDisplay="auto"
                 />
+                
+                <InputLabel>Excluded genres</InputLabel>
+                <Select
+                    multiple
+                    value={excludedGenres}
+                    onChange={e => setExcludedGenres(e.target.value)}
+                >
+                    {genres.map((genre) => (
+                        <MenuItem
+                        key={genre}
+                        value={genre}
+                        >
+                        {genre}
+                        </MenuItem>
+                    ))}
+                </Select>
                 <Button variant="contained"
                     onClick={updateSuggestions}
                     // i'll have to update this because otherwhise the user could just infinitely
-                    // press this, refreshing nothing BUT still making calls to the backend 
+                    // press this, refreshing nothing BUT still making calls to the backend
+                    sx={{
+                        alignSelf: "flex-end",
+                        maxWidth: "150px",
+                        marginTop: "20px"
+                    }}
                 >
                     Refresh
                 </Button>

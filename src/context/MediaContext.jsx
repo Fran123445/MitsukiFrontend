@@ -12,6 +12,7 @@ export function MediaContextProvider({ children }) {
     const [scoreRange, setScoreRange] = useState([0, 100]);
     const [yearRange, setYearRange] = useState([CONFIG.YEAR_RANGE.MIN, CONFIG.YEAR_RANGE.MAX]);
     const [suggestions, setSuggestions] = useState(null);
+    const [excludedGenres, setExcludedGenres] = useState([]);
 
     useEffect(() => {
         updateSuggestions();
@@ -43,8 +44,10 @@ export function MediaContextProvider({ children }) {
         yearRange,
         scoreRange,
         suggestions,
+        excludedGenres,
         setYearRange,
         setScoreRange,
+        setExcludedGenres,
         handleSelection,
         updateSuggestions,
     };
