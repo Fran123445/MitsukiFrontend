@@ -26,6 +26,7 @@ export function MediaContextProvider({ children }) {
             finalYear: yearRange[1],
             minimumScore: scoreRange[0],
             maximumScore: scoreRange[1],
+            excludedGenres: excludedGenres
         };
 
         mediaFetchingService.getSuggestions("ANIME", itemId, options) // temporarily hardcoded
