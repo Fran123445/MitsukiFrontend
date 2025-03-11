@@ -6,7 +6,7 @@ import genres from "../../public/genres.json"
 function Filters() {
 
     const { yearRange, setYearRange, scoreRange, setScoreRange, updateSuggestions,
-        excludedGenres, setExcludedGenres
+        excludedGenres, setExcludedGenres, includedGenres, setIncludedGenres,
      } = useContext(MediaContext)
 
 
@@ -32,6 +32,7 @@ function Filters() {
                     max={2025}
                     valueLabelDisplay="auto"
                 />
+
                 <Typography component="span">Score range</Typography>
                 <Slider
                     getAriaLabel={() => 'Score range'}
@@ -55,6 +56,23 @@ function Filters() {
                         </MenuItem>
                     ))}
                 </Select>
+
+                <InputLabel>Included genres</InputLabel>
+                <Select
+                    multiple
+                    value={includedGenres}
+                    onChange={e => setIncludedGenres(e.target.value)}
+                >
+                    {genres.map((genre) => (
+                        <MenuItem
+                        key={genre}
+                        value={genre}
+                        >
+                        {genre}
+                        </MenuItem>
+                    ))}
+                </Select>
+
                 <Button variant="contained"
                     onClick={updateSuggestions}
                     // i'll have to update this because otherwhise the user could just infinitely

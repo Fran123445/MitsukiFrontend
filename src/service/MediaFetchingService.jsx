@@ -1,6 +1,15 @@
 import { CONFIG } from '../config.jsx';
 
 export const mediaFetchingService = {
+
+    add_list_to_url(requestUrl, list, arg_name) {
+        if (list && list.length > 0) {
+            list.forEach(value => {
+                requestUrl.searchParams.append(arg_name, value);
+            });
+        }
+    },
+
     async getSuggestions(itemType, itemId, options) {
         const endpoint = CONFIG.BACKEND_ENDPOINTS[itemType];
 
@@ -13,11 +22,8 @@ export const mediaFetchingService = {
         requestUrl.searchParams.append('minimum_score', options.minimumScore);
         requestUrl.searchParams.append('maximum_score', options.maximumScore);
         
-        if (options.excludedGenres && options.excludedGenres.length > 0) {
-            options.excludedGenres.forEach(genre => {
-                requestUrl.searchParams.append('excluded_genres', genre);
-            });
-        }
+        this.add_list_to_url(requestUrl, options.excludedGenres, 'excluded_genres');
+        this.add_list_to_url(requestUrl, options.includedGenres, 'included_genres');
 
         const finalUrl = requestUrl.toString();
 

@@ -13,6 +13,7 @@ export function MediaContextProvider({ children }) {
     const [yearRange, setYearRange] = useState([CONFIG.YEAR_RANGE.MIN, CONFIG.YEAR_RANGE.MAX]);
     const [suggestions, setSuggestions] = useState(null);
     const [excludedGenres, setExcludedGenres] = useState([]);
+    const [includedGenres, setIncludedGenres] = useState([]);
 
     useEffect(() => {
         updateSuggestions();
@@ -26,7 +27,8 @@ export function MediaContextProvider({ children }) {
             finalYear: yearRange[1],
             minimumScore: scoreRange[0],
             maximumScore: scoreRange[1],
-            excludedGenres: excludedGenres
+            excludedGenres: excludedGenres,
+            includedGenres: includedGenres,
         };
 
         mediaFetchingService.getSuggestions("ANIME", itemId, options) // temporarily hardcoded
@@ -46,9 +48,11 @@ export function MediaContextProvider({ children }) {
         scoreRange,
         suggestions,
         excludedGenres,
+        includedGenres,
         setYearRange,
         setScoreRange,
         setExcludedGenres,
+        setIncludedGenres,
         handleSelection,
         updateSuggestions,
     };
