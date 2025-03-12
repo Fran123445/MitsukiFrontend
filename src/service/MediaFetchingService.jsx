@@ -24,6 +24,7 @@ export const mediaFetchingService = {
         
         this.add_list_to_url(requestUrl, options.excludedGenres, 'excluded_genres');
         this.add_list_to_url(requestUrl, options.includedGenres, 'included_genres');
+        this.add_list_to_url(requestUrl, options.selectedFormats, 'formats');
 
         const finalUrl = requestUrl.toString();
 

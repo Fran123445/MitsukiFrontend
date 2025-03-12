@@ -14,6 +14,8 @@ export function MediaContextProvider({ children }) {
     const [suggestions, setSuggestions] = useState(null);
     const [excludedGenres, setExcludedGenres] = useState([]);
     const [includedGenres, setIncludedGenres] = useState([]);
+    const formats = CONFIG.MEDIA_FORMAT["ANIME"];
+    const [selectedFormats, setSelectedFormats] = useState([]);
 
     useEffect(() => {
         updateSuggestions();
@@ -29,6 +31,7 @@ export function MediaContextProvider({ children }) {
             maximumScore: scoreRange[1],
             excludedGenres: excludedGenres,
             includedGenres: includedGenres,
+            selectedFormats: selectedFormats,
         };
 
         mediaFetchingService.getSuggestions("ANIME", itemId, options) // temporarily hardcoded
@@ -41,6 +44,15 @@ export function MediaContextProvider({ children }) {
         setItemId(id);
     }
 
+    const handleFormatChange = (event) => {
+        const { value } = event.target;
+        setSelectedFormats(prev => 
+            prev.includes(value) 
+                ? prev.filter(format => format !== value) 
+                : [...prev, value]
+        );
+    };
+
     const contextValue = {
         itemType,
         itemId,
@@ -49,10 +61,13 @@ export function MediaContextProvider({ children }) {
         suggestions,
         excludedGenres,
         includedGenres,
+        formats,
+        selectedFormats,
         setYearRange,
         setScoreRange,
         setExcludedGenres,
         setIncludedGenres,
+        handleFormatChange,
         handleSelection,
         updateSuggestions,
     };
