@@ -12,5 +12,19 @@ export const CONFIG = {
     BACKEND_ENDPOINTS: {
         ANIME: "/similarity/anime",
         MANGA: "/similarity/manga"
+    },
+    MEDIA_FORMAT: {
+        ANIME: [
+            "TV",
+            "MOVIE",
+            "OVA",
+            "TV_SHORT",
+            "ONA"
+        ],
+        MANGA: [
+            "MANGA",
+            "ONE_SHOT",
+            "NOVEL"
+        ]
     }
 }
