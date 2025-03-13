@@ -4,7 +4,7 @@ import Suggestions from "../components/Suggestions"
 import Filters from '../components/Filters';
 import { MediaContextProvider } from '../context/MediaContext';
 
-function AnimeInputPage() {
+function InputPage() {
   return (
     <MediaContextProvider>
       <div className="app-container">
@@ -17,5 +17,5 @@ function AnimeInputPage() {
   );
 }
 
-export default AnimeInputPage;
+export default InputPage;
 

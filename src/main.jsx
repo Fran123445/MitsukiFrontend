@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import ReactDOM from "react-dom/client";
 import './index.css'
-import AnimeInputPage from './page/AnimeInputPage.jsx'
+import InputPage from './page/InputPage.jsx'
 import { BrowserRouter, Routes, Route } from "react-router";
 import theme from './theme.jsx'
 import { ThemeProvider } from '@emotion/react'
@@ -14,7 +14,7 @@ ReactDOM.createRoot(root).render(
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path="recommendation">
-            <Route path="anime" element={<AnimeInputPage/>}/>
+            <Route path="anime" element={<InputPage/>}/>
           </Route>
         </Routes>
       </ThemeProvider>
