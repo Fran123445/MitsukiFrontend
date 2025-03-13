@@ -5,16 +5,15 @@ import anime_dict from "../../public/anime_dict.json"
 
 export const MediaContext  = createContext();
 
-export function MediaContextProvider({ children }) {
+export function MediaContextProvider({ children, inputType, recommendationType }) {
 
-    const [itemType, setItemType] = useState(null);
     const [itemId, setItemId] = useState(null);
     const [scoreRange, setScoreRange] = useState([0, 100]);
     const [yearRange, setYearRange] = useState([CONFIG.YEAR_RANGE.MIN, CONFIG.YEAR_RANGE.MAX]);
     const [suggestions, setSuggestions] = useState(null);
     const [excludedGenres, setExcludedGenres] = useState([]);
     const [includedGenres, setIncludedGenres] = useState([]);
-    const formats = CONFIG.MEDIA_FORMAT["ANIME"];
+    const formats = CONFIG.MEDIA_FORMAT[inputType];
     const [selectedFormats, setSelectedFormats] = useState([]);
 
     useEffect(() => {
@@ -34,7 +33,7 @@ export function MediaContextProvider({ children }) {
             selectedFormats: selectedFormats,
         };
 
-        mediaFetchingService.getSuggestions("ANIME", itemId, options) // temporarily hardcoded
+        mediaFetchingService.getSuggestions(recommendationType, itemId, options)
         .then(suggestionsFetched => setSuggestions(suggestionsFetched));
     }
 
@@ -54,7 +53,6 @@ export function MediaContextProvider({ children }) {
     };
 
     const contextValue = {
-        itemType,
         itemId,
         yearRange,
         scoreRange,
