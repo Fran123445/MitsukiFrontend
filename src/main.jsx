@@ -1,14 +1,23 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import ReactDOM from "react-dom/client";
 import './index.css'
 import AnimeInputPage from './page/AnimeInputPage.jsx'
+import { BrowserRouter, Routes, Route } from "react-router";
 import theme from './theme.jsx'
 import { ThemeProvider } from '@emotion/react'
 
-createRoot(document.getElementById('root')).render(
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root).render(
   <StrictMode>
-    <ThemeProvider theme={theme}>
-      <AnimeInputPage />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="recommendation">
+            <Route path="anime" element={<AnimeInputPage/>}/>
+          </Route>
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   </StrictMode>,
-)
+);
