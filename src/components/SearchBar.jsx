@@ -1,13 +1,19 @@
 import { useContext } from "react";
-import { Autocomplete, TextField } from "@mui/material"
+import { Autocomplete, TextField, createFilterOptions } from "@mui/material"
 import { MediaContext } from "../context/MediaContext";
 
 function SearchBar() {
-    const { mediaOptions, handleSelection } = useContext(MediaContext)
+    const { mediaOptions, handleSelection } = useContext(MediaContext);
+    const objectKeys = Object.keys(mediaOptions);
+    const filterOptions = createFilterOptions({
+        ignoreCase: true,
+        limit: 10
+    })
 
     return (
         <Autocomplete
-        options={Array.from(Object.keys(mediaOptions))}
+        filterOptions={filterOptions}
+        options={objectKeys}
         renderInput={(params) => <TextField {...params}/>}
         sx={{
             width: "100%",
