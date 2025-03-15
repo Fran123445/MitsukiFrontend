@@ -1,7 +1,7 @@
 import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography, Button, Select, FormGroup, FormControlLabel, Checkbox, MenuItem, InputLabel } from "@mui/material";
 import { useContext } from "react";
 import { MediaContext } from "../context/MediaContext";
-import genres from "../../public/genres.json"
+import genres from "../assets/genres.json"
 
 function Filters() {
 

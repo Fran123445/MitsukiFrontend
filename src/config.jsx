@@ -26,5 +26,9 @@ export const CONFIG = {
             "ONE_SHOT",
             "NOVEL"
         ]
+    },
+    MEDIA_MAPS: {
+        ANIME: "../assets/anime_dict.json",
+        MANGA: "../assets/manga_dict.json"
     }
 }
