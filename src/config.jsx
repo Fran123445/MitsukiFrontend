@@ -28,7 +28,7 @@ export const CONFIG = {
         ]
     },
     MEDIA_MAPS: {
-        ANIME: "../assets/anime_dict.json",
-        MANGA: "../assets/manga_dict.json"
+        ANIME: "/assets/anime_dict.json",
+        MANGA: "/assets/manga_dict.json"
     }
 }
