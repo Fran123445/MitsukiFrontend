@@ -4,7 +4,7 @@ import { mediaFetchingService } from "../service/MediaFetchingService";
 
 export const MediaContext  = createContext();
 
-export function MediaContextProvider({ children, inputType, recommendationType }) {
+export function MediaContextProvider({ children, inputType, suggestionType }) {
 
     const [mediaOptions, setMediaOptions] = useState({});
     const [itemId, setItemId] = useState(null);
@@ -38,7 +38,7 @@ export function MediaContextProvider({ children, inputType, recommendationType }
             selectedFormats: selectedFormats,
         };
 
-        mediaFetchingService.getSuggestions(recommendationType, itemId, options)
+        mediaFetchingService.getSuggestions(suggestionType, itemId, options)
         .then(suggestionsFetched => setSuggestions(suggestionsFetched));
     }
 
@@ -60,7 +60,7 @@ export function MediaContextProvider({ children, inputType, recommendationType }
     const contextValue = {
         itemId,
         mediaOptions,
-        recommendationType,
+        suggestionType,
         yearRange,
         scoreRange,
         suggestions,

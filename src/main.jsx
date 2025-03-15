@@ -14,8 +14,8 @@ ReactDOM.createRoot(root).render(
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path="recommendation">
-            <Route path="anime" element={<InputPage inputType={"ANIME"} recommendationType={"ANIME"}/>}/>
-            <Route path="manga" element={<InputPage inputType={"MANGA"} recommendationType={"MANGA"}/>}/>
+            <Route path="anime" element={<InputPage inputType={"ANIME"} suggestionType={"ANIME"}/>}/>
+            <Route path="manga" element={<InputPage inputType={"MANGA"} suggestionType={"MANGA"}/>}/>
           </Route>
         </Routes>
       </ThemeProvider>

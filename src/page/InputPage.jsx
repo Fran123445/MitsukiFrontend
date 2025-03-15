@@ -4,11 +4,11 @@ import Suggestions from "../components/Suggestions"
 import Filters from '../components/Filters';
 import { MediaContextProvider } from '../context/MediaContext';
 
-function InputPage({ inputType, recommendationType }) {
+function InputPage({ inputType, suggestionType }) {
   return (
-    <MediaContextProvider inputType={inputType} recommendationType={recommendationType}>
+    <MediaContextProvider inputType={inputType} suggestionType={suggestionType}>
       <div className="app-container">
-        <h1>Get {recommendationType} recommendations based on {inputType}</h1>
+        <h1>Get {suggestionType} recommendations based on {inputType}</h1>
         <SearchBar/>
         <Filters/>
         <Suggestions/>

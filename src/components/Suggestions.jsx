@@ -4,7 +4,7 @@ import { MediaContext } from '../context/MediaContext';
 
 function Suggestions() {
     
-    const { recommendationType, suggestions } = useContext(MediaContext);
+    const { suggestionType, suggestions } = useContext(MediaContext);
 
     const theme = useTheme()
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"))
@@ -54,7 +54,7 @@ function Suggestions() {
                           aspectRatio: "2/3", 
                           objectFit: "cover"
                         }}
-                        onClick={() => window.open(`https://anilist.co/${recommendationType.toLowerCase()}/${item.id}`)}
+                        onClick={() => window.open(`https://anilist.co/${suggestionType.toLowerCase()}/${item.id}`)}
                       />
                       <ImageListItemBar title={item.title} subtitle={`Score: ${item.score.toFixed(2)}`} />
                     </ImageListItem>

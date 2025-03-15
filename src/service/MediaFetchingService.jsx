@@ -10,8 +10,8 @@ export const mediaFetchingService = {
         }
     },
 
-    async getSuggestions(recommendationType, itemId, options) {
-        const endpoint = CONFIG.BACKEND_ENDPOINTS[recommendationType];
+    async getSuggestions(suggestionType, itemId, options) {
+        const endpoint = CONFIG.BACKEND_ENDPOINTS[suggestionType];
 
         const requestUrl = new URL(`${CONFIG.BACKEND_URL}${endpoint}`);
 
@@ -37,7 +37,7 @@ export const mediaFetchingService = {
 
             return await response.json();
         } catch (error) {
-            console.error(`Error fetching ${recommendationType} suggestions:`, error);
+            console.error(`Error fetching ${suggestionType} suggestions:`, error);
             throw error;
         }
     }
