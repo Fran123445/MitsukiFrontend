@@ -7,6 +7,7 @@ export const MediaContext  = createContext();
 export function MediaContextProvider({ children, inputType, suggestionType }) {
 
     const [mediaOptions, setMediaOptions] = useState({});
+    const [genres, setGenres] = useState([]);
     const [itemId, setItemId] = useState(null);
     const [scoreRange, setScoreRange] = useState([0, 100]);
     const [yearRange, setYearRange] = useState([CONFIG.YEAR_RANGE.MIN, CONFIG.YEAR_RANGE.MAX]);
@@ -14,16 +15,34 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
     const [excludedGenres, setExcludedGenres] = useState([]);
     const [includedGenres, setIncludedGenres] = useState([]);
     const formats = CONFIG.MEDIA_FORMAT[inputType];
-    const [selectedFormats, setSelectedFormats] = useState([]);
+    const [selectedFormats, setSelectedFormats] = useState(formats);
+
+    useEffect(() => {        
+        fetchJson(CONFIG.MEDIA_MAPS[inputType])
+        .then((data) => setMediaOptions(data));
+    }, [])
 
     useEffect(() => {
-        import(CONFIG.MEDIA_MAPS[inputType])
-        .then((res) => setMediaOptions(res.default || res));
-    })
+        fetchJson("/assets/genres.json")
+        .then((data) => setGenres(data));
+    }, [])
 
     useEffect(() => {
         updateSuggestions();
     }, [itemId])
+
+    async function fetchJson(URL) {
+        try {
+            const response = await fetch(URL);
+            if (!response.ok) {
+            throw new Error(`HTTP error. Status: ${response.status}`);
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
   
     function updateSuggestions() {
         if (!itemId) return;
@@ -64,6 +83,7 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
         yearRange,
         scoreRange,
         suggestions,
+        genres,
         excludedGenres,
         includedGenres,
         formats,

@@ -1,13 +1,12 @@
 import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography, Button, Select, FormGroup, FormControlLabel, Checkbox, MenuItem, InputLabel } from "@mui/material";
 import { useContext } from "react";
 import { MediaContext } from "../context/MediaContext";
-import genres from "../assets/genres.json"
 
 function Filters() {
 
     const { yearRange, setYearRange, scoreRange, setScoreRange, updateSuggestions,
         excludedGenres, setExcludedGenres, includedGenres, setIncludedGenres,
-        formats, selectedFormats, handleFormatChange,
+        formats, selectedFormats, handleFormatChange, genres
      } = useContext(MediaContext)
 
     return(
