@@ -14,18 +14,26 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
     const [suggestions, setSuggestions] = useState(null);
     const [excludedGenres, setExcludedGenres] = useState([]);
     const [includedGenres, setIncludedGenres] = useState([]);
-    const formats = CONFIG.MEDIA_FORMAT[inputType];
-    const [selectedFormats, setSelectedFormats] = useState(formats);
+    const [formats, setFormats] = useState([]);
+    const [selectedFormats, setSelectedFormats] = useState([]);
 
     useEffect(() => {        
         fetchJson(CONFIG.MEDIA_MAPS[inputType])
         .then((data) => setMediaOptions(data));
-    }, [])
+    }, [inputType])
 
     useEffect(() => {
         fetchJson("/assets/genres.json")
         .then((data) => setGenres(data));
     }, [])
+
+    useEffect(() => {
+        setFormats(CONFIG.MEDIA_FORMAT[inputType]);
+    }, [inputType])
+
+    useEffect(() => {
+        setSelectedFormats(formats);
+    }, [formats])
 
     useEffect(() => {
         updateSuggestions();
