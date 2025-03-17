@@ -1,22 +1,28 @@
 import { createTheme } from "@mui/material";
 
-let theme = createTheme({ });
+const customPalette = {
+  primary: {
+    main: '#010312',
+  },
+  secondary: {
+    main: '#c47704',
+  }
+};
+
+let theme = createTheme({ palette: customPalette });
+
+const background = `linear-gradient(to bottom, ${theme.palette.primary.main}95, ${theme.palette.primary.main}, ${theme.palette.primary.main}95)`;
 
 theme = createTheme(theme, {
-    palette: {
-        primary: theme.palette.augmentColor({ color: { main: "#154592" } }),
-        secondary:theme.palette.augmentColor({ color: { main: "#FFFFFF" } }),
-        tertiary: theme.palette.augmentColor({ color: { main: "#ff5722" } })
-    },
     components: {
         MuiCssBaseline: {
             styleOverrides: {
               html: {
-                background: "linear-gradient(to right, #1e3c72, #2a5298)",
+                background: background,
                 minHeight: "100%",
               },
               body: {
-                background: "linear-gradient(to right, #1e3c72, #2a5298)",
+                background: background,
                 minHeight: "100vh",
               },
             },
