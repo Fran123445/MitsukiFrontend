@@ -1,15 +1,27 @@
 import { createTheme } from "@mui/material";
 
-const theme = createTheme({
+let theme = createTheme({ });
+
+theme = createTheme(theme, {
     palette: {
-        primary: {
-            main: "#154592",
-        },
-        secondary: {
-            main: "rgba(255, 255, 255, 0.87)",
-        }
+        primary: theme.palette.augmentColor({ color: { main: "#154592" } }),
+        secondary:theme.palette.augmentColor({ color: { main: "#FFFFFF" } }),
+        tertiary: theme.palette.augmentColor({ color: { main: "#ff5722" } })
     },
     components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+              html: {
+                background: "linear-gradient(to right, #1e3c72, #2a5298)",
+                minHeight: "100%",
+              },
+              body: {
+                background: "linear-gradient(to right, #1e3c72, #2a5298)",
+                minHeight: "100vh",
+              },
+            },
+          },
+          
         MuiAutocomplete: {
             styleOverrides: {
                 inputRoot: ({ theme }) =>  ({

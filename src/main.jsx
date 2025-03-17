@@ -7,6 +7,7 @@ import theme from './theme.jsx'
 import { ThemeProvider } from '@emotion/react'
 import Home from './page/Home.jsx';
 import NavBar from './components/navbar/NavBar.jsx';
+import { CssBaseline } from '@mui/material';
 
 const root = document.getElementById("root");
 
@@ -14,6 +15,7 @@ ReactDOM.createRoot(root).render(
   <StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
+        <CssBaseline/>
         <NavBar/>
         <Routes>
           <Route path="/" element={<Home/>}/>
