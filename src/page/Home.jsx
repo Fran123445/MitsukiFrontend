@@ -1,6 +1,7 @@
 import { Box, Button, Typography, Card, CardContent, Stack, useTheme } from "@mui/material";
 
 import "../App.css"
+import GradientText from "../components/styledComponentes/GradientText";
 
 function Home() {
 
@@ -15,42 +16,43 @@ function Home() {
                 justifyContent: 'center',
                 alignItems: 'center',
             }}
+            gap={5}
         >
-            <Typography
-                variant="h3"
+            <GradientText
+                variant="h2"
                 fontWeight="bold"
-                color="secondary"
+                colors={[theme.palette.secondary.main, theme.palette.accentOrange, theme.palette.secondary.main]}
             >
                 Discover Your Next Obsession
-            </Typography>
-            <Typography
+            </GradientText>
+            
+            <GradientText
                 variant="h6"
-                color="secondary"
-                margin={"20px"}
+                colors={[theme.palette.secondary.main, theme.palette.accentOrange, theme.palette.secondary.main]}
             >
                 We analyze thousands of titles to perfectly match your unique taste.
                 <br />
                 Get recommendations that feel they were made just for you.
-            </Typography>
-            
+            </GradientText>           
 
             <Box
                 sx={{
                     display: "flex",
                     justifySelf: "center"
                 }}
+                gap={20}
             >
                 <Box>
-                    <Typography color="secondary" margin={"20px"}>Based on existing titles</Typography>
-                    <Stack direction="row" spacing={2} justifyContent="center" sx={{ marginTop: "10px" }}>
+                    <Typography color="secondary" align="center">Based on existing titles</Typography>
+                    <Stack direction="row" spacing={2} justifyContent="center">
                         <Button variant="outlined" color="secondary">Anime</Button>
                         <Button variant="outlined" color="secondary">Manga</Button>
                     </Stack>
                 </Box>
 
                 <Box>
-                    <Typography color="secondary" margin={"20px"}>Based on Your Profile</Typography>
-                    <Stack direction="row" spacing={2} justifyContent="center" sx={{ marginTop: "10px" }}>
+                    <Typography color="secondary" align="center">Based on Your Profile</Typography>
+                    <Stack direction="row" spacing={2} justifyContent="center">
                         <Button variant="outlined" color="secondary">Anime</Button>
                         <Button variant="outlined" color="secondary">Manga</Button>
                     </Stack>
