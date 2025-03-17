@@ -4,6 +4,8 @@ import "../App.css"
 
 function Home() {
 
+    const theme = useTheme();
+
     return(
         <Box
             sx={{
@@ -14,24 +16,46 @@ function Home() {
                 alignItems: 'center',
             }}
         >
-            <Card sx={{ padding: "30px", borderRadius: "12px", boxShadow: "0px 4px 10px rgba(0,0,0,0.3)", textAlign: "center", backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
-                <CardContent>
-                    <Typography variant="h3" fontWeight="bold" color="white">Find the series that suits you best</Typography>
-                    
-                    <Typography color="white" sx={{ marginTop: "10px" }}>Get recommendations based on specific media</Typography>
-                    <Stack direction="row" spacing={2} justifyContent="center" sx={{ marginTop: "10px" }}>
-                        <Button variant="contained">Anime</Button>
-                        <Button variant="contained" color="tertiary">Manga</Button>
-                    </Stack>
+            <Typography
+                variant="h3"
+                fontWeight="bold"
+                color="secondary"
+            >
+                Discover Your Next Obsession
+            </Typography>
+            <Typography
+                variant="h6"
+                color="secondary"
+                margin={"20px"}
+            >
+                We analyze thousands of titles to perfectly match your unique taste.
+                <br />
+                Get recommendations that feel they were made just for you.
+            </Typography>
+            
 
-                    <Typography color="white" sx={{ marginTop: "20px" }}>Or based on your profile</Typography>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifySelf: "center"
+                }}
+            >
+                <Box>
+                    <Typography color="secondary" margin={"20px"}>Based on existing titles</Typography>
                     <Stack direction="row" spacing={2} justifyContent="center" sx={{ marginTop: "10px" }}>
-                        <Button variant="contained">Anime</Button>
-                        <Button variant="contained" color="tertiary">Manga</Button>
+                        <Button variant="outlined" color="secondary">Anime</Button>
+                        <Button variant="outlined" color="secondary">Manga</Button>
                     </Stack>
-                </CardContent>
-            </Card>
+                </Box>
 
+                <Box>
+                    <Typography color="secondary" margin={"20px"}>Based on Your Profile</Typography>
+                    <Stack direction="row" spacing={2} justifyContent="center" sx={{ marginTop: "10px" }}>
+                        <Button variant="outlined" color="secondary">Anime</Button>
+                        <Button variant="outlined" color="secondary">Manga</Button>
+                    </Stack>
+                </Box>
+            </Box>
         </Box>
     )
 }
