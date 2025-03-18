@@ -1,10 +1,3 @@
-.app-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 80px;
-}
-
 html, body, #root {
   height: 100%;
   margin: 0

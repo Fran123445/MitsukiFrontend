@@ -3,27 +3,36 @@ import SearchBar from '../components/SearchBar';
 import Suggestions from "../components/Suggestions"
 import Filters from '../components/Filters';
 import { MediaContextProvider } from '../context/MediaContext';
-import { Typography } from '@mui/material';
+import GradientText from "../components/styledComponentes/GradientText"
+import { useTheme } from '@emotion/react';
+import { Box } from '@mui/material';
 
 function InputPage({ inputType, suggestionType }) {
+
+  const theme = useTheme();
+
   return (
     <MediaContextProvider inputType={inputType} suggestionType={suggestionType}>
-      <div className="app-container">
-        <Typography 
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          padding: "80px"
+        }}
+      >
+        <GradientText  
           variant='h2'
-          component={'h2'}
-          color='secondary'
-          sx={{
-            marginBottom: "20px"
-          }}
+          fontWeight="bold"
+          colors={[theme.palette.secondary.main, theme.palette.accentOrange, theme.palette.secondary.main]}
         >
-            Get {suggestionType} recommendations based on {inputType}
-        </Typography>
+          Get {suggestionType} recommendations based on {inputType}
+        </GradientText>
         
         <SearchBar/>
         <Filters/>
         <Suggestions/>
-      </div>
+      </Box>
     </MediaContextProvider>
   );
 }
