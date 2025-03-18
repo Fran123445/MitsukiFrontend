@@ -2,12 +2,7 @@ import { useTheme, useMediaQuery, ImageList, ImageListItem, ImageListItemBar, Bo
 import { useContext } from 'react';
 import { MediaContext } from '../context/MediaContext';
 
-const NUM_COLS_SMALL = 2;
-const NUM_COLS_MEDIUM = 3;
-const NUM_COLS_LARGE = 5;
 const IMAGE_LIST_GAP = 16;
-const ZOOM_DELAY = 50;
-const PAPER_PADDING = 0.4;
 const ASPECT_RATIO = '2/3';
 
 function Suggestions() {
@@ -17,9 +12,9 @@ function Suggestions() {
     const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
     
     const getCols = () => {
-        if (isSmallScreen) return NUM_COLS_SMALL;
-        if (isMediumScreen) return NUM_COLS_MEDIUM;
-        return NUM_COLS_LARGE;
+        if (isSmallScreen) return theme.breakpoints.values.imageCols.small;
+        if (isMediumScreen) return theme.breakpoints.values.imageCols.medium;
+        return theme.breakpoints.values.imageCols.large;
     };
 
     if (!suggestions) {
@@ -33,7 +28,7 @@ function Suggestions() {
                   <Zoom 
                       in={true} 
                       style={{ 
-                          transitionDelay: `${index * ZOOM_DELAY}ms`,
+                          transitionDelay: `${index * theme.transitions.zoomDelay}ms`,
                       }}
                       key={`${item.id}`}
                   >
@@ -41,7 +36,7 @@ function Suggestions() {
                           elevation={4} 
                           sx={{ 
                               overflow: 'hidden',
-                              padding: PAPER_PADDING,
+                              padding: theme.spacing(0.4),
                               background: `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.main}90)`,
                               "&:hover": {
                                   "& .MuiImageListItemBar-title": {

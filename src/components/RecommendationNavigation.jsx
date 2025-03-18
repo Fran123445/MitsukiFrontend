@@ -7,10 +7,10 @@ const RecommendationSection = ({ title, icon: Icon, buttons }) => {
 
     const paperStyling = {
         backgroundColor: theme.palette.secondary.main,
-        padding: {xs: 2, sm: 4},
+        padding: theme.spacing(2),
         display: "flex",
         flexDirection: "column",
-        gap: { xs: 2, sm: 3 },
+        gap: theme.spacing(2),
         transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
         "&:hover": {
             transform: "translateY(-8px)",
@@ -19,14 +19,8 @@ const RecommendationSection = ({ title, icon: Icon, buttons }) => {
     }
 
     const buttonStyle = {
-        padding: "12px 24px",
-        fontSize: "1rem",
-        fontWeight: 500,
-        "&:hover": {
-            backgroundColor: theme.palette.primary.main,
-            color: "#fff",
-            transform: "scale(1.05)"
-        }
+        padding: theme.spacing(2),
+        fontSize: theme.typography.pxToRem(16),
     };
 
     return (
