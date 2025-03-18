@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material"
 
-function GradientText({ children, variant, colors, fontWeight }) {
+function GradientText({ children, variant, colors, fontWeight, sx }) {
     return(
         <Typography
           variant={variant}
@@ -9,6 +9,7 @@ function GradientText({ children, variant, colors, fontWeight }) {
             backgroundImage: `linear-gradient(45deg, ${colors.join(",")})`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
+            ...sx
           }}
         >
           {children}
