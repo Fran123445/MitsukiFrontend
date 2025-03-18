@@ -7,7 +7,7 @@ import GradientText from "../components/styledComponentes/GradientText"
 import { useTheme } from '@emotion/react';
 import { Box } from '@mui/material';
 
-function InputPage({ inputType, suggestionType }) {
+function InputPage({ text, inputType, suggestionType }) {
 
   const theme = useTheme();
 
@@ -26,7 +26,7 @@ function InputPage({ inputType, suggestionType }) {
           fontWeight="bold"
           colors={[theme.palette.secondary.main, theme.palette.accentOrange, theme.palette.secondary.main]}
         >
-          Get {suggestionType} recommendations based on {inputType}
+          {text}
         </GradientText>
         
         <SearchBar/>
