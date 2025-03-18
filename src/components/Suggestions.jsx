@@ -9,7 +9,6 @@ const IMAGE_LIST_GAP = 16;
 const ZOOM_DELAY = 50;
 const PAPER_PADDING = 0.4;
 const ASPECT_RATIO = '2/3';
-const BORDER_RADIUS = '6px';
 
 function Suggestions() {
     const { suggestionType, suggestions } = useContext(MediaContext);
@@ -41,7 +40,6 @@ function Suggestions() {
                       <Paper 
                           elevation={4} 
                           sx={{ 
-                              borderRadius: BORDER_RADIUS,
                               overflow: 'hidden',
                               padding: PAPER_PADDING,
                               background: `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.main}90)`,
@@ -65,15 +63,13 @@ function Suggestions() {
                                   style={{ 
                                       aspectRatio: ASPECT_RATIO,
                                       objectFit: "cover",
-                                      borderRadius: BORDER_RADIUS
+                                      borderRadius: theme.shape.borderRadius
                                   }}
                               />
                               <ImageListItemBar 
                                   title={item.title} 
                                   subtitle={`Score: ${item.score.toFixed(2)}`}
                                   sx={{
-                                      borderBottomLeftRadius: BORDER_RADIUS,
-                                      borderBottomRightRadius: BORDER_RADIUS,
                                       background: 'linear-gradient(rgba(0,0,0,0)1%, rgba(0,0,0,1)95%)',
                                       '& .MuiImageListItemBar-title': {
                                           fontSize: '0.9rem',

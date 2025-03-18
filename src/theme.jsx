@@ -15,6 +15,9 @@ let theme = createTheme({ palette: customPalette });
 const background = `linear-gradient(to bottom, ${theme.palette.primary.main}95, ${theme.palette.primary.main}, ${theme.palette.primary.main}95)`;
 
 theme = createTheme(theme, {
+    shape: {
+        borderRadius: "6px"
+    },
     components: {
         MuiCssBaseline: {
             styleOverrides: {

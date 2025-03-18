@@ -11,7 +11,6 @@ const RecommendationSection = ({ title, icon: Icon, buttons }) => {
         display: "flex",
         flexDirection: "column",
         gap: { xs: 2, sm: 3 },
-        borderRadius: 4,
         transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
         "&:hover": {
             transform: "translateY(-8px)",
@@ -21,7 +20,6 @@ const RecommendationSection = ({ title, icon: Icon, buttons }) => {
 
     const buttonStyle = {
         padding: "12px 24px",
-        borderRadius: 8,
         fontSize: "1rem",
         fontWeight: 500,
         "&:hover": {
