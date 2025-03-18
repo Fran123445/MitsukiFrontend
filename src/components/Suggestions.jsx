@@ -22,23 +22,16 @@ function Suggestions() {
 
     return(
         (
-            <Box 
-              sx={{
-                backgroundColor: theme.palette.secondary.main,
-                padding: 2,
-                borderRadius: 2
-              }}
-            >
               <ImageList cols={getCols()} gap={16}>
                 {suggestions.map((item, index) => (
                   <Paper 
                     elevation={3} 
                     key={index}
                     sx={{ 
-                      backgroundColor: theme.palette.primary.main,
+                      backgroundColor: theme.palette.secondary.main,
                       borderRadius: 2,
                       overflow: 'hidden',
-                      padding: 2,
+                      padding: 0.4,
                       "&:hover": {
                         backgroundColor: "red",
                         cursor: "pointer"
@@ -61,7 +54,6 @@ function Suggestions() {
                   </Paper>
                 ))}
               </ImageList>
-            </Box>
           )
     )
 }
