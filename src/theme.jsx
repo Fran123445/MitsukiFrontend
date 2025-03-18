@@ -7,7 +7,7 @@ const customPalette = {
   secondary: {
     main: '#c47704',
   },
-  accentOrange: "#db6300"
+  accentOrange: "#db6300",
 };
 
 let theme = createTheme({ palette: customPalette });

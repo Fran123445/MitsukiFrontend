@@ -1,4 +1,4 @@
-import { Box, Button, Typography, Card, CardContent, Stack, useTheme } from "@mui/material";
+import { Box, Button, Typography, Stack, useTheme, Paper } from "@mui/material";
 
 import "../App.css"
 import GradientText from "../components/styledComponentes/GradientText";
@@ -6,6 +6,20 @@ import GradientText from "../components/styledComponentes/GradientText";
 function Home() {
 
     const theme = useTheme();
+
+    const paperStyling = {
+        backgroundColor: theme.palette.secondary.main,
+        padding: {xs: 2, sm: 4},
+        display: "flex",
+        flexDirection: "column",
+        gap: { xs: 2, sm: 3 },
+        borderRadius: 4,
+        transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+        "&:hover": {
+            transform: "translateY(-8px)",
+            boxShadow: "0 12px 32px rgba(0, 0, 0, 0.18)",
+        }
+    }
 
     return(
         <Box
@@ -16,7 +30,7 @@ function Home() {
                 justifyContent: 'center',
                 alignItems: 'center',
             }}
-            gap={5}
+            gap={15}
         >
             <GradientText
                 variant="h2"
@@ -38,25 +52,29 @@ function Home() {
             <Box
                 sx={{
                     display: "flex",
-                    justifySelf: "center"
+                    justifySelf: "center",
                 }}
                 gap={20}
             >
-                <Box>
-                    <Typography color="secondary" align="center">Based on existing titles</Typography>
-                    <Stack direction="row" spacing={2} justifyContent="center">
-                        <Button variant="outlined" color="secondary">Anime</Button>
-                        <Button variant="outlined" color="secondary">Manga</Button>
+                <Paper
+                    sx={paperStyling}
+                >
+                    <Typography color="primary" align="center">Based on existing titles</Typography>
+                    <Stack spacing={5} justifyContent="center">
+                        <Button variant="outlined" color="primary">Anime</Button>
+                        <Button variant="outlined" color="primary">Manga</Button>
                     </Stack>
-                </Box>
+                </Paper>
 
-                <Box>
-                    <Typography color="secondary" align="center">Based on Your Profile</Typography>
-                    <Stack direction="row" spacing={2} justifyContent="center">
-                        <Button variant="outlined" color="secondary">Anime</Button>
-                        <Button variant="outlined" color="secondary">Manga</Button>
+                <Paper
+                    sx={paperStyling}
+                >
+                    <Typography color="primary" align="center">Based on Your Profile</Typography>
+                    <Stack spacing={5} justifyContent="center">
+                        <Button variant="outlined" color="primary">Anime</Button>
+                        <Button variant="outlined" color="primary">Manga</Button>
                     </Stack>
-                </Box>
+                </Paper>
             </Box>
         </Box>
     )
