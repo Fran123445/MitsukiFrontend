@@ -1,40 +1,15 @@
-import { Box, Button, Typography, Stack, useTheme, Paper } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import RecommendIcon from '@mui/icons-material/Recommend';
 import PersonIcon from '@mui/icons-material/Person';
 import TvIcon from '@mui/icons-material/Tv';
 import BookIcon from '@mui/icons-material/Book';
 import "../App.css"
 import GradientText from "../components/styledComponentes/GradientText";
+import RecommendationSection from "../components/RecommendationNavigation";
 
 function Home() {
 
     const theme = useTheme();
-
-    const paperStyling = {
-        backgroundColor: theme.palette.secondary.main,
-        padding: {xs: 2, sm: 4},
-        display: "flex",
-        flexDirection: "column",
-        gap: { xs: 2, sm: 3 },
-        borderRadius: 4,
-        transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
-        "&:hover": {
-            transform: "translateY(-8px)",
-            boxShadow: "0 12px 32px rgba(0, 0, 0, 0.18)",
-        }
-    }
- 
-    const buttonStyle = {
-        padding: "12px 24px",
-        borderRadius: 8,
-        fontSize: "1rem",
-        fontWeight: 500,
-        "&:hover": {
-            backgroundColor: theme.palette.primary.main,
-            color: "#fff",
-            transform: "scale(1.05)"
-        }
-    };
     
     return(
         <Box
@@ -76,75 +51,22 @@ function Home() {
                 }}
                 gap={{ xs: 4, md: 8 }}
             >
-                <Paper
-                    sx={paperStyling}
-                    elevation={3}
-                >
-                    
-                    <Stack direction="row" alignItems="center" justifyContent="center" spacing={1}>
-                        <RecommendIcon color="primary" />
-                        <Typography 
-                            color="primary" 
-                            align="center" 
-                            variant="h6" 
-                            sx={{ fontWeight: 600, mb: 2 }}
-                        >
-                            Based on Existing Titles
-                        </Typography>
-                    </Stack>
-
-                    <Stack spacing={5} justifyContent="center">
-                        <Button 
-                            variant="contained" 
-                            color="primary"
-                            startIcon={<TvIcon />}
-                        >
-                            Anime
-                        </Button>
-                        <Button 
-                            variant="contained" 
-                            color="primary"
-                            startIcon={<BookIcon />}
-                        >
-                            Manga
-                        </Button>
-                    </Stack>
-                </Paper>
-
-                <Paper
-                    sx={paperStyling}
-                    elevation={3}
-                >
-                    <Stack direction="row" alignItems="center" justifyContent="center" spacing={1}>
-                        <PersonIcon color="primary" />
-                        <Typography 
-                            color="primary" 
-                            align="center" 
-                            variant="h6" 
-                            sx={{ fontWeight: 600, mb: 2 }}
-                        >
-                            Based on Your Profile
-                        </Typography>
-                    </Stack>
-                    <Stack spacing={5} justifyContent="center">
-                    <Stack spacing={5} justifyContent="center">
-                        <Button 
-                            variant="contained" 
-                            color="primary"
-                            startIcon={<TvIcon />}
-                        >
-                            Anime
-                        </Button>
-                        <Button 
-                            variant="contained" 
-                            color="primary"
-                            startIcon={<BookIcon />}
-                        >
-                            Manga
-                        </Button>
-                    </Stack>
-                    </Stack>
-                </Paper>
+                <RecommendationSection
+                title="Based on Existing Titles"
+                icon={RecommendIcon}
+                buttons={[
+                    { label: 'Anime', icon: <TvIcon />, to: '/recommendation/anime' },
+                    { label: 'Manga', icon: <BookIcon />, to: '/recommendation/manga' },
+                ]}
+                />
+                <RecommendationSection
+                    title="Based on Your Profile"
+                    icon={PersonIcon}
+                    buttons={[
+                        { label: 'Anime', icon: <TvIcon />, to: '/recommendation/anime' }, // just for testing, will be moved to /recommendation/user/anime
+                        { label: 'Manga', icon: <BookIcon />, to: '/recommendation/manga' },
+                    ]}
+                />
             </Box>
         </Box>
     )
