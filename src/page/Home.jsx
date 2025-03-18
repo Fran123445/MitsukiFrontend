@@ -1,4 +1,4 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, useTheme, Stack } from "@mui/material";
 import RecommendIcon from '@mui/icons-material/Recommend';
 import PersonIcon from '@mui/icons-material/Person';
 import TvIcon from '@mui/icons-material/Tv';
@@ -44,20 +44,17 @@ function Home() {
                 </GradientText> 
             </Box>          
 
-            <Box
-                sx={{
-                    display: "flex",
-                    justifySelf: "center",
-                }}
-                gap={{ xs: 4, md: 8 }}
+            <Stack
+                direction={{ xs: "column", md: "row" }}
+                gap={{ xs: 4, md: 24 }}
             >
                 <RecommendationSection
-                title="Based on Existing Titles"
-                icon={RecommendIcon}
-                buttons={[
-                    { label: 'Anime', icon: <TvIcon />, to: '/recommendation/anime' },
-                    { label: 'Manga', icon: <BookIcon />, to: '/recommendation/manga' },
-                ]}
+                    title="Based on Existing Titles"
+                    icon={RecommendIcon}
+                    buttons={[
+                        { label: 'Anime', icon: <TvIcon />, to: '/recommendation/anime' },
+                        { label: 'Manga', icon: <BookIcon />, to: '/recommendation/manga' },
+                    ]}
                 />
                 <RecommendationSection
                     title="Based on Your Profile"
@@ -67,7 +64,7 @@ function Home() {
                         { label: 'Manga', icon: <BookIcon />, to: '/recommendation/manga' },
                     ]}
                 />
-            </Box>
+            </Stack>
         </Box>
     )
 }
