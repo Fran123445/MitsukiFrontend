@@ -79,17 +79,18 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
     function updateSuggestions() {
         if (!itemId) return;
 
-        const options = {
-            initialYear: yearRange[0],
-            finalYear: yearRange[1],
-            minimumScore: scoreRange[0],
-            maximumScore: scoreRange[1],
-            excludedGenres: Array.from(excludedGenres),
-            includedGenres: Array.from(includedGenres),
-            selectedFormats: selectedFormats,
+        const params = {
+            id: itemId,
+            initial_year: yearRange[0],
+            final_year: yearRange[1],
+            minimum_score: scoreRange[0],
+            maximum_score: scoreRange[1],
+            excluded_genres: Array.from(excludedGenres),
+            included_genres: Array.from(includedGenres),
+            formats: selectedFormats,
         };
 
-        mediaFetchingService.getSuggestions(suggestionType, itemId, options)
+        mediaFetchingService.getMediaBasedSuggestions(suggestionType, params)
         .then(suggestionsFetched => setSuggestions(suggestionsFetched));
     }
 

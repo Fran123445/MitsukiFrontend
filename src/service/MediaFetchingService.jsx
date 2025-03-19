@@ -10,21 +10,18 @@ export const mediaFetchingService = {
         }
     },
 
-    async getSuggestions(suggestionType, itemId, options) {
-        const endpoint = CONFIG.BACKEND_ENDPOINTS[suggestionType];
-
+    async fetchSuggestions(endpoint, params) {
         const requestUrl = new URL(`${CONFIG.BACKEND_URL}${endpoint}`);
 
-        requestUrl.searchParams.append('id', itemId);
-        requestUrl.searchParams.append('top_n', CONFIG.DEFAULT_TOP_N);
-        requestUrl.searchParams.append('initial_year', options.initialYear);
-        requestUrl.searchParams.append('final_year', options.finalYear);
-        requestUrl.searchParams.append('minimum_score', options.minimumScore);
-        requestUrl.searchParams.append('maximum_score', options.maximumScore);
-        
-        this.add_list_to_url(requestUrl, options.excludedGenres, 'excluded_genres');
-        this.add_list_to_url(requestUrl, options.includedGenres, 'included_genres');
-        this.add_list_to_url(requestUrl, options.selectedFormats, 'formats');
+        params.top_n = CONFIG.DEFAULT_TOP_N;
+
+        Object.entries(params).forEach(([key, value]) => {
+            if (Array.isArray(value)) {
+                this.add_list_to_url(requestUrl, value, key);
+            } else {
+                requestUrl.searchParams.append(key, value);
+            }
+        });
 
         const finalUrl = requestUrl.toString();
 
@@ -37,8 +34,20 @@ export const mediaFetchingService = {
 
             return await response.json();
         } catch (error) {
-            console.error(`Error fetching ${suggestionType} suggestions:`, error);
+            console.error(`Error fetching suggestions:`, error);
             throw error;
         }
+    },
+
+    async getMediaBasedSuggestions(suggestionType, params) {
+        const endpoint = CONFIG.BACKEND_ENDPOINTS[suggestionType];
+
+        return await this.fetchSuggestions(endpoint, params);
+    },
+
+    async getUserBasedSuggestions(suggestionType, params) {
+        const endpoint = CONFIG.BACKEND_ENDPOINTS["USER"][suggestionType];
+
+        return await this.fetchSuggestions(endpoint, params);
     }
 }
