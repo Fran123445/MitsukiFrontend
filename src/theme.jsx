@@ -53,8 +53,19 @@ theme = createTheme(theme, {
           backgroundColor: theme.palette.secondary.main
         }),
         paper: ({ theme }) => ({
-          backgroundColor: theme.palette.secondary.main
-        })
+          backgroundColor: theme.palette.secondary.main,
+        }),
+        option: ({ theme }) => ({
+          color: theme.palette.primary.main,
+          
+          // apparently paper has higher priority than option,
+          // so I have to use !important
+          // if there's other way around it, I have no idea.
+          '&:hover, &[aria-selected="true"]': {
+            backgroundColor: `${theme.palette.primary.main} !important`,
+            color: theme.palette.secondary.main,
+          },
+        }),
       }
     },
     MuiAccordion: {
@@ -83,6 +94,32 @@ theme = createTheme(theme, {
           '&:hover': {
             color: theme.palette.accentOrange
           }
+        })
+      }
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.primary.main,
+          backgroundColor: theme.palette.secondary.main,
+          '&.Mui-selected': {
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.secondary.main,
+            '&:hover': {
+              backgroundColor: theme.palette.primary.main,
+            }
+          },
+          '&:hover': {
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.secondary.main,
+          }
+        })
+      }
+    },
+    MuiPopover: {
+      styleOverrides: {
+        paper: ({ theme }) => ({
+          backgroundColor: theme.palette.secondary.main,
         })
       }
     },
