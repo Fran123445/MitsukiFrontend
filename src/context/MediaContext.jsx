@@ -12,8 +12,8 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
     const [scoreRange, setScoreRange] = useState([0, 100]);
     const [yearRange, setYearRange] = useState([CONFIG.YEAR_RANGE.MIN, CONFIG.YEAR_RANGE.MAX]);
     const [suggestions, setSuggestions] = useState(null);
-    const [excludedGenres, setExcludedGenres] = useState([]);
-    const [includedGenres, setIncludedGenres] = useState([]);
+    const [excludedGenres, setExcludedGenres] = useState(new Set());
+    const [includedGenres, setIncludedGenres] = useState(new Set());
     const [formats, setFormats] = useState([]);
     const [selectedFormats, setSelectedFormats] = useState([]);
 
@@ -51,7 +51,31 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
             console.log(error);
         }
     }
-  
+
+
+    // These functions are meant to be used in the genre selectors
+    function toggleOptionState(options, sourceSet, setSourceSet, setTargetSet) {
+        const newTargetSet = new Set();
+
+        options.forEach(option => {
+            if (sourceSet.has(option)) {
+                sourceSet.delete(option);
+            }
+            newTargetSet.add(option);
+        });
+
+        setSourceSet(new Set(sourceSet));
+        setTargetSet(new Set(newTargetSet));
+    }
+
+    function toggleGenreExclusion(genres) {
+        toggleOptionState(genres, includedGenres, setIncludedGenres, setExcludedGenres);
+    }
+
+    function toggleGenreInclusion(genres) {
+        toggleOptionState(genres, excludedGenres, setExcludedGenres, setIncludedGenres);
+    }
+
     function updateSuggestions() {
         if (!itemId) return;
 
@@ -100,6 +124,8 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
         setScoreRange,
         setExcludedGenres,
         setIncludedGenres,
+        toggleGenreExclusion,
+        toggleGenreInclusion,
         handleFormatChange,
         handleSelection,
         updateSuggestions,

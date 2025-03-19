@@ -9,7 +9,7 @@ import OptionSelector from "./OptionSelector";
 function Filters() {
 
     const { yearRange, setYearRange, scoreRange, setScoreRange, updateSuggestions,
-        excludedGenres, setExcludedGenres, includedGenres, setIncludedGenres,
+        excludedGenres, includedGenres, toggleGenreInclusion, toggleGenreExclusion,
         formats, selectedFormats, handleFormatChange, genres
      } = useContext(MediaContext)
 
@@ -61,15 +61,15 @@ function Filters() {
                 
                 <OptionSelector
                     label="Excluded genres"
-                    selectedOptions={excludedGenres}
-                    setOptions={setExcludedGenres}
+                    selectedOptions={Array.from(excludedGenres)}
+                    setOptions={toggleGenreExclusion}
                     options={genres}
                 />
 
                 <OptionSelector
                     label="Included genres"
-                    selectedOptions={includedGenres}
-                    setOptions={setIncludedGenres}
+                    selectedOptions={Array.from(includedGenres)}
+                    setOptions={toggleGenreInclusion}
                     options={genres}
                 />
 
