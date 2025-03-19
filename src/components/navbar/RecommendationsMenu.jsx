@@ -50,6 +50,14 @@ function RecommendationsMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
         MenuListProps={{ sx: { width: menuWidth } }}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
       >
         <MenuItem onClick={(e) => setMediaBasedAnchorEl(e.currentTarget)}>
           Media Based
