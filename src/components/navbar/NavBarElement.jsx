@@ -7,17 +7,11 @@ function NavBarElement({ name, path }) {
     const theme = useTheme();
     const location = useLocation();
 
-    function handleClick() {
-        console.log(path);
-        console.log(useLocation())
-    }
-
     return (
         <Button
         disableRipple={true}
         component={Link}
         to={path}
-        onClick={handleClick}
         sx={{ 
             margin: "10px", 
             padding: "10px",
