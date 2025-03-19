@@ -84,8 +84,8 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
             finalYear: yearRange[1],
             minimumScore: scoreRange[0],
             maximumScore: scoreRange[1],
-            excludedGenres: excludedGenres,
-            includedGenres: includedGenres,
+            excludedGenres: Array.from(excludedGenres),
+            includedGenres: Array.from(includedGenres),
             selectedFormats: selectedFormats,
         };
 
