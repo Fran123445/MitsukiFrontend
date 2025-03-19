@@ -59,8 +59,8 @@ function Home() {
           title="Based on Your Profile"
           icon={PersonIcon}
           buttons={[
-            { label: 'Anime', icon: <TvIcon />, to: '/recommendation/anime' },
-            { label: 'Manga', icon: <BookIcon />, to: '/recommendation/manga' },
+            { label: 'Anime', icon: <TvIcon />, to: '/recommendation/user/anime' },
+            { label: 'Manga', icon: <BookIcon />, to: '/recommendation/user/manga' },
           ]}
         />
       </Stack>
