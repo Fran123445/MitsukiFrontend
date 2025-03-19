@@ -1,6 +1,10 @@
-import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography, Button, Select, FormGroup, FormControlLabel, Checkbox, MenuItem, InputLabel } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography, Button, FormGroup, FormControlLabel, Checkbox, Box } from "@mui/material";
 import { useContext } from "react";
 import { MediaContext } from "../context/MediaContext";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { useTheme } from "@emotion/react";
+import OptionSelector from "./OptionSelector";
 
 function Filters() {
 
@@ -9,68 +13,66 @@ function Filters() {
         formats, selectedFormats, handleFormatChange, genres
      } = useContext(MediaContext)
 
+     const theme = useTheme();
+
     return(
         <Accordion
             sx={{
                 width: "100%",
                 maxWidth: "1000px",
                 marginBottom: 4,
+                borderRadius: theme.shape.borderRadius
             }}
             disableGutters={true}
         >
-            <AccordionSummary>
+            <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+                <FilterAltIcon sx={{ mr: 1, color: theme.palette.primary.main }} />
                 <Typography component="span">Filters</Typography>
             </AccordionSummary>
+
             <AccordionDetails sx={{ display: 'flex', flexDirection: 'column'}}>
                 <Typography component="span">Year range</Typography>
-                <Slider
-                    getAriaLabel={() => 'Year range'}
-                    onChange={(_,v) => setYearRange(v)}
-                    value={yearRange}
-                    min={1900}
-                    max={2025}
-                    valueLabelDisplay="auto"
-                />
+                <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                    <Slider
+                        getAriaLabel={() => 'Year range'}
+                        onChange={(_,v) => setYearRange(v)}
+                        value={yearRange}
+                        min={1900}
+                        max={2025}
+                        valueLabelDisplay="auto"
+                        sx={{
+                            width: '98%'
+                        }}
+                    />
+                </Box>
 
                 <Typography component="span" sx={{ marginTop: 2 }}>Score range</Typography>
-                <Slider
-                    getAriaLabel={() => 'Score range'}
-                    onChange={(_,v) => setScoreRange(v)}
-                    value={scoreRange}
-                    valueLabelDisplay="auto"
-                />
+                <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                    <Slider
+                        getAriaLabel={() => 'Score range'}
+                        onChange={(_,v) => setScoreRange(v)}
+                        value={scoreRange}
+                        valueLabelDisplay="auto"
+                        sx={{
+                            width: '98%'
+                        }}
+                    />
+                </Box>
                 
-                <InputLabel sx={{ marginTop: 2 }}>Excluded genres</InputLabel>
-                <Select
-                    multiple
-                    value={excludedGenres}
-                    onChange={e => setExcludedGenres(e.target.value)}
-                >
-                    {genres.map((genre) => (
-                        <MenuItem
-                        key={genre}
-                        value={genre}
-                        >
-                        {genre}
-                        </MenuItem>
-                    ))}
-                </Select>
+                <OptionSelector
+                    label="Excluded genres"
+                    selectedOptions={excludedGenres}
+                    setOptions={setExcludedGenres}
+                    options={genres}
+                />
 
-                <InputLabel sx={{ marginTop: 2 }}>Included genres</InputLabel>
-                <Select
-                    multiple
-                    value={includedGenres}
-                    onChange={e => setIncludedGenres(e.target.value)}
-                >
-                    {genres.map((genre) => (
-                        <MenuItem
-                        key={genre}
-                        value={genre}
-                        >
-                        {genre}
-                        </MenuItem>
-                    ))}
-                </Select>
+                <OptionSelector
+                    label="Included genres"
+                    selectedOptions={includedGenres}
+                    setOptions={setIncludedGenres}
+                    options={genres}
+                />
+
 
                 <Typography component="span" sx={{ marginTop: 2 }}>Formats</Typography>
                 <FormGroup row>
