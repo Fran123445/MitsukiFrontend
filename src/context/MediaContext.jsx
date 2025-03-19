@@ -9,7 +9,7 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
     const [mediaOptions, setMediaOptions] = useState({});
     const [genres, setGenres] = useState([]);
     const [itemId, setItemId] = useState(null);
-    const [scoreRange, setScoreRange] = useState([0, 100]);
+    const [scoreRange, setScoreRange] = useState([60, 100]);
     const [yearRange, setYearRange] = useState([CONFIG.YEAR_RANGE.MIN, CONFIG.YEAR_RANGE.MAX]);
     const [suggestions, setSuggestions] = useState(null);
     const [excludedGenres, setExcludedGenres] = useState(new Set());
