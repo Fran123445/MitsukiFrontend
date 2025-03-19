@@ -92,7 +92,8 @@ function Filters() {
                     sx={{
                         alignSelf: "flex-end",
                         maxWidth: "150px",
-                        marginTop: 2
+                        marginTop: 2,
+                        color: theme.palette.secondary.main
                     }}
                 >
                     Refresh
