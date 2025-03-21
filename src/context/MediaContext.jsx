@@ -1,10 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { CONFIG } from '../config';
 import { mediaFetchingService } from "../service/MediaFetchingService";
+import { UserContext } from "../context/UserContext";
 
 export const MediaContext  = createContext();
 
-export function MediaContextProvider({ children, inputType, suggestionType }) {
+export function MediaContextProvider({ children, inputType, suggestionType, suggestionMode = "media" }) {
 
     const [mediaOptions, setMediaOptions] = useState({});
     const [genres, setGenres] = useState([]);
@@ -16,6 +17,8 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
     const [includedGenres, setIncludedGenres] = useState(new Set());
     const [formats, setFormats] = useState([]);
     const [selectedFormats, setSelectedFormats] = useState([]);
+
+    const { username } = useContext(UserContext);
 
     useEffect(() => {        
         fetchJson(CONFIG.MEDIA_MAPS[inputType])
@@ -36,8 +39,16 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
     }, [formats])
 
     useEffect(() => {
-        updateSuggestions();
-    }, [itemId])
+        if (suggestionMode === "media" && itemId) {
+            updateSuggestions();
+        }
+    }, [itemId, selectedFormats])
+
+    useEffect(() => {
+        if (suggestionMode === "user" && username) {
+            updateSuggestions();
+        }
+    }, [username, selectedFormats])
 
     async function fetchJson(URL) {
         try {
@@ -77,10 +88,7 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
     }
 
     function updateSuggestions() {
-        if (!itemId) return;
-
-        const params = {
-            id: itemId,
+        const baseParams = {
             initial_year: yearRange[0],
             final_year: yearRange[1],
             minimum_score: scoreRange[0],
@@ -90,8 +98,30 @@ export function MediaContextProvider({ children, inputType, suggestionType }) {
             formats: selectedFormats,
         };
 
-        mediaFetchingService.getMediaBasedSuggestions(suggestionType, params)
-        .then(suggestionsFetched => setSuggestions(suggestionsFetched));
+        let params;
+        let fetchPromise;
+
+        if (suggestionMode === "user") {
+            if (!username) return;
+            
+            params = {
+                ...baseParams,
+                username: username
+            };
+            
+            fetchPromise = mediaFetchingService.getUserBasedSuggestions(suggestionType, params);
+        } else {
+            if (!itemId) return;
+            
+            params = {
+                ...baseParams,
+                id: itemId
+            };
+            
+            fetchPromise = mediaFetchingService.getMediaBasedSuggestions(suggestionType, params);
+        }
+
+        fetchPromise.then(suggestionsFetched => setSuggestions(suggestionsFetched));
     }
 
     function handleSelection(selectedItem) {
