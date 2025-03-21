@@ -8,23 +8,32 @@ import { ThemeProvider } from '@emotion/react'
 import Home from './page/Home.jsx';
 import NavBar from './components/navbar/NavBar.jsx';
 import { CssBaseline } from '@mui/material';
+import UserRecommendationPage from './page/UserRecommendationPage.jsx';
+import { UserContextProvider } from './context/UserContext';
 
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
   <StrictMode>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <NavBar/>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="recommendation">
-            <Route path="anime" element={<InputPage text="Get Anime recommendations based on Anime" inputType={"ANIME"} suggestionType={"ANIME"}/>}/>
-            <Route path="manga" element={<InputPage text="Get Manga recommendations based on Manga" inputType={"MANGA"} suggestionType={"MANGA"}/>}/>
-          </Route>
-        </Routes>
-      </ThemeProvider>
+      <UserContextProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline/>
+          <NavBar/>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="recommendation">
+              <Route path="anime" element={<InputPage text="Get Anime recommendations based on Anime" inputType={"ANIME"} suggestionType={"ANIME"}/>}/>
+              <Route path="manga" element={<InputPage text="Get Manga recommendations based on Manga" inputType={"MANGA"} suggestionType={"MANGA"}/>}/>
+
+              <Route path="user">
+                <Route path="anime" element={<UserRecommendationPage inputType={"ANIME"} suggestionType={"ANIME"}/>}/>
+                <Route path="manga" element={<UserRecommendationPage inputType={"MANGA"} suggestionType={"MANGA"}/>}/>
+              </Route>
+            </Route>
+          </Routes> 
+        </ThemeProvider>
+      </UserContextProvider>
     </BrowserRouter>
   </StrictMode>,
 );
