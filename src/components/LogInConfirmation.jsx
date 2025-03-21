@@ -2,6 +2,7 @@ import { Box, Button, Typography, Modal } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
+import ProfilePic from "./ProfilePic";
 
 
 function LogInConfirmation({ tempUsername, userAvatarUrl, showConfirmation, setShowConfirmation, setTempUserAvatarUrl }) {
@@ -43,30 +44,7 @@ function LogInConfirmation({ tempUsername, userAvatarUrl, showConfirmation, setS
                 </Typography>
 
                 <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: theme.spacing(2)}}>
-                    <Box
-                        sx={{
-                            width: 48,
-                            height: 48,
-                            borderRadius: '50%',
-                            overflow: 'hidden',
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            justifyContent: 'center',
-                            border: `2px solid ${theme.palette.primary.main}`
-                        }}
-                    >
-                        <img 
-                            src={userAvatarUrl} 
-                            alt="User Avatar" 
-                            style={{ 
-                                width: '100%', 
-                                height: '100%', 
-                                objectFit: 'cover', 
-                                objectPosition: 'top' 
-                            }} 
-                        />
-                    </Box>
-
+                    <ProfilePic userAvatarUrl={userAvatarUrl}/>
                     <Typography>
                         {tempUsername}
                     </Typography>
