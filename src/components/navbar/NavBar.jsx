@@ -1,6 +1,7 @@
-import { AppBar, Toolbar } from "@mui/material";
+import { AppBar, Toolbar, Box } from "@mui/material";
 import NavBarElement from "./NavBarElement";
 import RecommendationsMenu from "./RecommendationsMenu";
+import UserInfo from "./UserInfo";
 
 function NavBar() {
 
@@ -12,6 +13,10 @@ function NavBar() {
         <RecommendationsMenu />
 
         <NavBarElement name={"About"} path={"/about"} />
+        
+        <Box sx={{ flexGrow: 1 }} />
+
+        <UserInfo/>
       </Toolbar>
     </AppBar>
   );
