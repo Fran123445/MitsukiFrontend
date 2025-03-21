@@ -11,7 +11,12 @@ export const CONFIG = {
     BACKEND_URL: "http://localhost:8000",
     BACKEND_ENDPOINTS: {
         ANIME: "/similarity/anime",
-        MANGA: "/similarity/manga"
+        MANGA: "/similarity/manga",
+        USER: {
+            ANIME: "/similarity/user/anime",
+            MANGA: "/similarity/user/manga",
+            DATA: "/user"
+        }
     },
     MEDIA_FORMAT: {
         ANIME: [
