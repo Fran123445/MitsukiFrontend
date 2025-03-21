@@ -1,9 +1,10 @@
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function ProfilePic({ userAvatarUrl }) {
-
   const theme = useTheme();
+  const isValidUrl = !!userAvatarUrl;
 
   return (
     <Box
@@ -13,21 +14,26 @@ function ProfilePic({ userAvatarUrl }) {
         borderRadius: '50%',
         overflow: 'hidden',
         display: 'flex',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'center',
-        border: `2px solid ${theme.palette.primary.main}`
+        border: `2px solid ${theme.palette.primary.main}`,
+        backgroundColor: theme.palette.background.default,
       }}
     >
-      <img 
-        src={userAvatarUrl} 
-        alt="User Avatar" 
-        style={{ 
-          width: '100%', 
-          height: '100%', 
-          objectFit: 'cover', 
-          objectPosition: 'top' 
-        }} 
-      />
+      {isValidUrl ? (
+        <img
+          src={userAvatarUrl}
+          alt="User Avatar"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'top',
+          }}
+        />
+      ) : (
+        <AccountCircleIcon sx={{ width: '100%', height: '100%', color: theme.palette.primary.main, backgroundColor: theme.palette.secondary.main }} />
+      )}
     </Box>
   );
 }
