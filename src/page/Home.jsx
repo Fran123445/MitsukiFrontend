@@ -56,7 +56,7 @@ function Home() {
           ]}
         />
         <RecommendationSection
-          title="Based on Your Profile"
+          title="Based on Your own tastes"
           icon={PersonIcon}
           buttons={[
             { label: 'Anime', icon: <TvIcon />, to: '/recommendation/user/anime' },
