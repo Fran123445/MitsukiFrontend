@@ -18,7 +18,6 @@ function SearchBar() {
       sx={{
         width: "100%",
         maxWidth: "600px",
-        marginBottom: 4,
       }}
       onChange={(_, v) => handleSelection(v)}
     />

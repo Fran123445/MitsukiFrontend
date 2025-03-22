@@ -18,7 +18,6 @@ function Filters() {
       sx={{
         width: "100%",
         maxWidth: "1000px",
-        marginBottom: 4,
         borderRadius: theme.shape.borderRadius
       }}
       disableGutters={true}

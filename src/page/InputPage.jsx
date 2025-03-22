@@ -19,15 +19,13 @@ function InputPage({ text, inputType, suggestionType }) {
           flexDirection: "column",
           alignItems: "center",
           padding: "80px",
+          gap: theme.spacing(2),
         }}
       >
         <GradientText  
           variant='h2'
           fontWeight="bold"
           colors={[theme.palette.secondary.main, theme.palette.accentOrange, theme.palette.secondary.main]}
-          sx={{
-            marginBottom: 4
-          }}
         >
           {text}
         </GradientText>

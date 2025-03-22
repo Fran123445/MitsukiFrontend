@@ -22,7 +22,7 @@ function Suggestions() {
   }
 
   return(
-    <Box sx={{ width: '100%', mt: 1 }}>
+    <Box sx={{ width: '100%'}}>
       <ImageList cols={getCols()} gap={IMAGE_LIST_GAP}>
         {suggestions.map((item, index) => (
           <Zoom 
