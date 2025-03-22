@@ -45,10 +45,10 @@ export function MediaContextProvider({ children, inputType, suggestionType, sugg
     }, [itemId, selectedFormats])
 
     useEffect(() => {
-        if (suggestionMode === "user" && username) {
+        if (suggestionMode === "user" && username && selectedFormats.length > 0) {
             updateSuggestions();
         }
-    }, [username, selectedFormats])
+    }, [username, selectedFormats]);
 
     async function fetchJson(URL) {
         try {
