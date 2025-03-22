@@ -3,11 +3,11 @@ import SearchBar from '../components/SearchBar';
 import Suggestions from "../components/Suggestions"
 import Filters from '../components/Filters';
 import { MediaContextProvider } from '../context/MediaContext';
-import GradientText from "../components/styledComponentes/GradientText"
 import { useTheme } from '@emotion/react';
 import { Box } from '@mui/material';
+import PageTitle from '../components/PageTitle';
 
-function InputPage({ text, inputType, suggestionType }) {
+function InputPage({ inputType, suggestionType }) {
 
   const theme = useTheme();
 
@@ -22,13 +22,7 @@ function InputPage({ text, inputType, suggestionType }) {
           gap: theme.spacing(2),
         }}
       >
-        <GradientText  
-          variant='h2'
-          fontWeight="bold"
-          colors={[theme.palette.secondary.main, theme.palette.accentOrange, theme.palette.secondary.main]}
-        >
-          {text}
-        </GradientText>
+        <PageTitle subtitle={`Based on your favorite ${inputType.toLowerCase()}`}/>
         
         <SearchBar/>
         <Filters/>
