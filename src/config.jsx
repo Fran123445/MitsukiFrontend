@@ -4,6 +4,10 @@ export const CONFIG = {
         MAX: 2025
     },
     DEFAULT_TOP_N: 25,
+    PLATFORMS: [
+        "AniList",
+        "MyAnimeList"
+    ],
     MEDIA_EXTERNAL_LINKS: {
         ANIME: "https://anilist.co/anime/{id}",
         MANGA: "https://anilist.co/manga/{id}"
@@ -15,7 +19,10 @@ export const CONFIG = {
         USER: {
             ANIME: "/similarity/user/anime",
             MANGA: "/similarity/user/manga",
-            DATA: "/user"
+            DATA: {
+                AniList: "/user/anilist",
+                MyAnimeList: "/user/myanimelist"
+            }
         }
     },
     MEDIA_FORMAT: {
