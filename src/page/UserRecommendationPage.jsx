@@ -3,7 +3,7 @@ import { MediaContextProvider } from '../context/MediaContext';
 import Filters from '../components/Filters';
 import Suggestions from '../components/Suggestions';
 import { Box } from '@mui/material';
-import LogIn from '../components/LogIn';
+import LogIn from '../components/login/LogIn';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useTheme } from '@mui/material/styles';

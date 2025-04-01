@@ -1,5 +1,5 @@
 import { ToggleButton, ToggleButtonGroup } from "@mui/material"
-import { CONFIG } from "../config"
+import { CONFIG } from "../../config"
 
 function PlatformToggle({ setPlatform, platform }) {
     return (

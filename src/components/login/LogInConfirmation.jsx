@@ -1,8 +1,8 @@
 import { Box, Button, Typography, Modal } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useContext } from "react";
-import { UserContext } from "../context/UserContext";
-import ProfilePic from "./ProfilePic";
+import { UserContext } from "../../context/UserContext";
+import ProfilePic from "../ProfilePic";
 
 
 function LogInConfirmation({ tempUsername, userAvatarUrl, showConfirmation, setShowConfirmation, setTempUserAvatarUrl }) {

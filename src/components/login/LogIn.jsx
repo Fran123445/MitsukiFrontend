@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { Modal, Box, TextField, Button, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import LogInConfirmation from "./LogInConfirmation";
-import { userFetchingService } from "../service/UserFetchingService";
+import { userFetchingService } from "../../service/UserFetchingService";
 import { useContext } from "react";
 import PlatformToggle from "./PlatformToggle";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 
 function LogIn({ open }) {
     
