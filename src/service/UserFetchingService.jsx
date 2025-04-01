@@ -1,9 +1,9 @@
 import { CONFIG } from '../config.jsx';
 
 export const userFetchingService = {
-    async fetchUser(username) {
+    async fetchUser(username, platform) {
         try {
-            const requestUrl = new URL(`${CONFIG.BACKEND_URL}${CONFIG.BACKEND_ENDPOINTS.USER.DATA}`);
+            const requestUrl = new URL(`${CONFIG.BACKEND_URL}${CONFIG.BACKEND_ENDPOINTS.USER.DATA[platform]}`);
             requestUrl.searchParams.append("username", username);
             const finalUrl = requestUrl.toString();
 
