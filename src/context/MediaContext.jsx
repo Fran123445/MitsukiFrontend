@@ -18,7 +18,7 @@ export function MediaContextProvider({ children, inputType, suggestionType, sugg
     const [formats, setFormats] = useState([]);
     const [selectedFormats, setSelectedFormats] = useState([]);
 
-    const { username } = useContext(UserContext);
+    const { username, platform } = useContext(UserContext);
 
     useEffect(() => {        
         fetchJson(CONFIG.MEDIA_MAPS[inputType])
@@ -106,7 +106,8 @@ export function MediaContextProvider({ children, inputType, suggestionType, sugg
             
             params = {
                 ...baseParams,
-                username: username
+                username: username,
+                platform: platform
             };
             
             fetchPromise = mediaFetchingService.getUserBasedSuggestions(suggestionType, params);
