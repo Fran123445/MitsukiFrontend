@@ -10,6 +10,7 @@ import NavBar from './components/navbar/NavBar.jsx';
 import { CssBaseline } from '@mui/material';
 import UserRecommendationPage from './page/UserRecommendationPage.jsx';
 import { UserContextProvider } from './context/UserContext';
+import About from './page/About.jsx';
 
 const root = document.getElementById("root");
 
@@ -31,6 +32,7 @@ ReactDOM.createRoot(root).render(
                 <Route path="manga" element={<UserRecommendationPage inputType={"MANGA"} suggestionType={"MANGA"}/>}/>
               </Route>
             </Route>
+            <Route path="about" element={<About/>}/>
           </Routes> 
         </ThemeProvider>
       </UserContextProvider>
