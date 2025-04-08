@@ -5,14 +5,9 @@ import AboutSegment from "../components/AboutSegment";
 const aboutData = [
     {
       title: "What's Mitsuki?",
-      content: (
-        <>
-          Besides a witch who happens to love anime and manga, Mitsuki is a content-based recommendation system
-          <br />
+      content: (`Besides a witch who happens to love anime and manga, Mitsuki is a content-based recommendation system
           that uses a combination of machine learning approaches and vector similarities to analyze your preferences and recommend titles that match your tastes.
-          <br />
-          (Or recommend you titles based on specific titles you input)
-        </>
+          (Or recommend you titles based on specific titles you input)`
       ),
     },
     {
@@ -25,9 +20,7 @@ const aboutData = [
         <>
           I've always been a big fan of anime and manga and I've been using AniList for a few years since I wanted to keep track of what I watched and read.
           <br />
-          Eventually, I figured that, since I had all my watched anime and manga neatly scored and organized on one site,
-          <br />
-          I could use that data to recommend titles that matched my tastes.
+          Eventually, I figured that, since I had all my watched anime and manga neatly scored and organized on one site, I could use that data to recommend titles that matched my tastes.
           <br />
           So here we are.
         </>
@@ -81,7 +74,7 @@ const aboutData = [
         }}>
           <Box
               component="img"
-              src="assets/mitsuki.jpeg"
+              src="assets/mitsuki.webp"
               alt="Mitsuki"
               sx={{
                 display: 'block',
