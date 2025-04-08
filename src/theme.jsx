@@ -14,7 +14,7 @@ let theme = createTheme({
   palette: customPalette,
 });
 
-const background = `linear-gradient(to bottom, ${theme.palette.primary.main}95, ${theme.palette.primary.main}, ${theme.palette.primary.main}95)`;
+const background = `linear-gradient(to bottom, ${theme.palette.primary.main}CC, ${theme.palette.primary.main}, ${theme.palette.primary.main}CC)`;
 
 theme = createTheme(theme, {
   transitions: {
@@ -39,10 +39,10 @@ theme = createTheme(theme, {
       styleOverrides: {
         html: {
           background: background,
-          minHeight: "100%",
+          minHeight: "100vh",
         },
         body: {
-          background: background,
+          background: "transparent",
           minHeight: "100vh",
         },
       },
