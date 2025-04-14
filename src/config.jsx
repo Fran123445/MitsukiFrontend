@@ -3,7 +3,7 @@ export const CONFIG = {
         MIN: 1900,
         MAX: 2025
     },
-    DEFAULT_TOP_N: 25,
+    DEFAULT_TOP_N: 100,
     PLATFORMS: [
         "AniList",
         "MyAnimeList"
