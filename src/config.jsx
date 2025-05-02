@@ -12,7 +12,7 @@ export const CONFIG = {
         ANIME: "https://anilist.co/anime/{id}",
         MANGA: "https://anilist.co/manga/{id}"
     },
-    BACKEND_URL: "http://localhost:8000",
+    BACKEND_URL: "https://mitsuki.onrender.com",
     BACKEND_ENDPOINTS: {
         ANIME: "/similarity/anime",
         MANGA: "/similarity/manga",
